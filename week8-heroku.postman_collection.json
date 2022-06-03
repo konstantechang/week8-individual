@@ -1,0 +1,638 @@
+{
+	"info": {
+		"_postman_id": "ed7cc185-6ad7-430f-bdfd-bc0e4f6e45cc",
+		"name": "week8-heroku",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20092079"
+	},
+	"item": [
+		{
+			"name": "註冊會員",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"miquella\",\r\n    \"password\": \"1Password!\",\r\n    \"confirmPassword\": \"1Password!\",\r\n    \"email\": \"miquella@eldenring.io\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/user/sign_up",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"sign_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "登入會員",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"okina@eldenring.io\",\r\n    \"password\": \"1Password!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/users/sign_in",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"sign_in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "重設密碼",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"1Password!\",\r\n    \"confirmPassword\": \"1Password!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/users/updatePassword",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"updatePassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得個人資料",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "更新個人資料",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"okina\",\r\n    \"avatar\": \"avatar.io\",\r\n    \"gender\": \"x\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/users/profile",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "追踪朋友",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/users/629a2be2bcedda30bb96d8c3/follow",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"629a2be2bcedda30bb96d8c3",
+						"follow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取消追踪朋友",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/users/629a2be2bcedda30bb96d8c3/unfollow",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"629a2be2bcedda30bb96d8c3",
+						"unfollow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得個人按讚列表",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/users/getLikeList",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"getLikeList"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得個人追踪名單",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/users/following",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"users",
+						"following"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得所有的貼文",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得單一貼文",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/posts/629a2dc5bcedda30bb96d8e3",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"629a2dc5bcedda30bb96d8e3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增貼文",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"content\": \"I am okina, one of the bloody fingers\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/posts",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增一則貼文的讚",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/posts/629a2dc5bcedda30bb96d8e3/like",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"629a2dc5bcedda30bb96d8e3",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取消一則貼文的讚",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/posts/629a2dc5bcedda30bb96d8e3/unlike",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"629a2dc5bcedda30bb96d8e3",
+						"unlike"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "新增一則貼文的留言",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comment\": \"屍山血河 死屍累累 屍山血海 屍橫遍野\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/posts/629a2dc5bcedda30bb96d8e3/comment",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"629a2dc5bcedda30bb96d8e3",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "取得個人所有貼文列表",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/posts/user/629a29e8bcedda30bb96d8b6",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"posts",
+						"user",
+						"629a29e8bcedda30bb96d8b6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "上傳圖片",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWEyOWU4YmNlZGRhMzBiYjk2ZDhiNiIsIm5hbWUiOiJva2luYSIsImF2YXRhciI6IiIsImlhdCI6MTY1NDI3MDQ5MiwiZXhwIjoxNjU0ODc1MjkyfQ.joVgQQc7AjsX7URLsLUavlwD5EMA-3TfnsZNDDT1XnE",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": "/C:/Users/chris/Pictures/okina500.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://cryptic-reef-24866.herokuapp.com/upload",
+					"protocol": "https",
+					"host": [
+						"cryptic-reef-24866",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
