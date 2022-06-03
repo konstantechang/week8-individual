@@ -1,11 +1,24 @@
 const Post = require('../models/post');
+const Comment = require('../models/comments');
 const handleErrorAsync = require('../middleware/handleErrorAsync');
 const successHandle = require('../utils/successHandle');
 const appError = require('../utils/appError');
 
 const postController = {
   getAll: handleErrorAsync(async (req, res, next) => {
-    const post = await Post.find();
+    let { timeSort, q } = req.query;
+    timeSort = timeSort === 'asc' ? 'createdAt' : '-createdAt';
+    query = q !== undefined ? { content: new RegExp(req.query.q) } : {};
+    const post = await Post.find(query)
+      .populate({
+        path: 'userId',
+        select: 'name avatar',
+      })
+      .populate({
+        path: 'comments',
+        select: 'comment user createdAt',
+      })
+      .sort(timeSort);
     successHandle(res, '成功撈取所有貼文', post);
   }),
   getOne: handleErrorAsync(async (req, res, next) => {
@@ -67,6 +80,27 @@ const postController = {
     const _id = req.params.id;
     await Post.findOneAndUpdate({ _id }, { $pull: { likes: req.user.id } });
     successHandle(res, '刪除一個讚');
+  }),
+  addComment: handleErrorAsync(async (req, res, next) => {
+    const {
+      params: { id: post },
+      user: { id: user },
+      body: { comment: comment },
+    } = req;
+    const newComment = await Comment.create({
+      post,
+      user,
+      comment,
+    });
+    successHandle(res, '成功新增一則留言');
+  }),
+  getUserPosts: handleErrorAsync(async (req, res, next) => {
+    const userId = req.params.id;
+    const getPosts = await Post.find({ userId }).populate({
+      path: 'comments',
+      select: 'comment user',
+    });
+    successHandle(res, '成功取得單一會員所有貼文', getPosts);
   }),
 };
 module.exports = postController;

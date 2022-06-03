@@ -26,7 +26,7 @@ const generateToken = (user) => {
   const payload = {
     id: user._id,
     name: user.name,
-    photo: user.photo,
+    avatar: user.avatar,
   };
   return jwt.sign(payload, jwtSecret, { expiresIn: jwtExpires });
 };

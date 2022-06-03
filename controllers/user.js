@@ -43,7 +43,7 @@ const userController = {
     const userPayload = {
       id: currentUser._id,
       name: currentUser.name,
-      photo: currentUser.photo,
+      avatar: currentUser.avatar,
     };
     const token = generateToken(currentUser);
     return successHandle(res, '成功建立使用者帳號', { token, user: userPayload });
@@ -65,7 +65,7 @@ const userController = {
     const userPayload = {
       id: user._id,
       name: user.name,
-      photo: user.photo,
+      avatar: user.avatar,
     };
     const token = generateToken(user);
     return successHandle(res, '登入成功', { token, user: userPayload });
@@ -92,18 +92,18 @@ const userController = {
     return successHandle(res, '成功更新使用者密碼！', {});
   }),
   updateProfile: handleErrorAsync(async (req, res, next) => {
-    let { name, photo, gender } = req.body;
-    if (!name && !photo && !gender) {
+    let { name, avatar, gender } = req.body;
+    if (!name && !avatar && !gender) {
       return appError(400, '要修改的欄位未正確填寫', next);
     }
-    if (!validator.isURL(photo)) {
+    if (!validator.isURL(avatar)) {
       return appError(400, '請確認照片是否傳入網址', next);
     }
     const userId = req.user.id;
-    const userData = { name, photo, gender };
+    const userData = { name, avatar, gender };
     await User.findByIdAndUpdate(userId, userData, { runValidators: true });
     const user = await User.findById(userId);
-    const returnUser = { name: user.name, gender: user.gender, photo: user.photo };
+    const returnUser = { name: user.name, gender: user.gender, avatar: user.avatar };
     return successHandle(res, '成功更新使用者資訊！', returnUser);
   }),
   addFollower: handleErrorAsync(async (req, res, next) => {
@@ -174,6 +174,15 @@ const userController = {
       { content: false, image: false, likes: false },
     );
     return successHandle(res, '成功取得按讚表單', likeList);
+  }),
+  getFollowList: handleErrorAsync(async (req, res, next) => {
+    const followList = await User.find(
+      {
+        _id: req.user.id,
+      },
+      { _id: 0, following: 1 },
+    );
+    return successHandle(res, '成功取得追蹤名單', followList);
   }),
 };
 

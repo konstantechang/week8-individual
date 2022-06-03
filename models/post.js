@@ -25,12 +25,19 @@ const postSchema = new mongoose.Schema(
       default: [],
     },
   },
-  { versionKey: false },
+  { versionKey: false, toJSON: { virtuals: true }, toObject: { virtuals: true }, id: false },
 );
+
+postSchema.virtual('comments', {
+  ref: 'Comment',
+  foreignField: 'post',
+  localField: '_id',
+});
+
 postSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'userId',
-    select: 'name photo _id',
+    select: '-following -followers -isValidator',
   });
   next();
 });

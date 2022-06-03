@@ -35,7 +35,7 @@ const userSchema = {
     minLength: [1, '名稱請大於 1 個字'],
     maxLength: [50, '名稱長度過長，最多只能 50 個字'],
   },
-  photo: {
+  avatar: {
     type: String,
     default: '',
   },
@@ -93,6 +93,14 @@ const User_Schema = new mongoose.Schema(userSchema, {
 User_Schema.pre('save', function () {
   const salt = bcrypt.genSaltSync(8);
   this.password = bcrypt.hashSync(this.password, salt);
+});
+
+User_Schema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'following.user',
+    select: '-createdAt -following -isValidator -followers',
+  });
+  next();
 });
 
 const User = mongoose.model('User', User_Schema);

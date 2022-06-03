@@ -8,10 +8,16 @@ const { isAuthor } = require('../middleware/handleJWT');
 //資料全撈
 router.get('/', postController.getAll);
 router.get('/:id', postController.getOne);
-router.post('/create', isAuthor, postController.postCreate);
-router.delete('/:id', isAuthor, postController.postDelete);
-router.patch('/:id', isAuthor, postController.postPatch);
-router.post('/:id/likes', isAuthor, postController.addLike);
-router.delete('/:id/likes', isAuthor, postController.deleteLike);
+router.post('/', isAuthor, postController.postCreate);
+router.post('/:id/like', isAuthor, postController.addLike);
+router.delete('/:id/unlike', isAuthor, postController.deleteLike);
+router.post('/:id/comment', isAuthor, postController.addComment);
+router.get('/user/:id', postController.getUserPosts);
+
+
+
+
+
+
 
 module.exports = router;
